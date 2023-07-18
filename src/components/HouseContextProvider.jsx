@@ -9,7 +9,7 @@ const HouseContextProvider = ({ children }) => {
   const [countries, setCountries] = useState([]);
   const [property, setProperty] = useState("property type (any)");
   const [properties, setProperties] = useState([]);
-  const [price, setPrice] = useState("any price");
+  const [price, setPrice] = useState("(any) price");
   const [loading, setLoading] = useState(false);
 
   //return all countries
@@ -34,18 +34,19 @@ const HouseContextProvider = ({ children }) => {
     setProperties(uniqueProperties);
   }, []);
 
+
   const handleClick = () => {
     setLoading(true);
     // create a function that check if the string includes 'any'
     const isDefault = (str) => {
-      return str.split("").includes("(any)");
+      return str.split(" ").includes("(any)");
     };
 
     // get first value of price and parse it to number
-    const minPrice = parseInt(price.split("-")[0]);
+    const minPrice = parseInt(price.split(" ")[0]);
+    // get second value of price which is the max price and parse it to number
+    const maxPrice = parseInt(price.split(" ")[2]);
 
-    // get seco9nd value of price which is the max price and parse it to number
-    const maxPrice = parseInt(price.split("-")[1]);
     const newHouses = housesData.filter((house) => {
       const housePrice = parseInt(house.price);
       //if all value are selected
