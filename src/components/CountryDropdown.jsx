@@ -22,9 +22,9 @@ const CountryDropdown = () => {
           <div className="text-[13px]">Select your place</div>
         </div>
         {isOpen ? (
-          <RiArrowUpSLine className="dropdown-icon-secondary" />
-        ) : (
           <RiArrowDownSLine className="dropdown-icon-secondary" />
+        ) : (
+          <RiArrowUpSLine className="dropdown-icon-secondary" />
         )}
       </Menu.Button>
       <Menu.Items className='dropdown-menu'>
